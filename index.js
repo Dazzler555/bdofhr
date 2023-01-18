@@ -1,3 +1,21 @@
+const express = require('express');
+const app = express();
+
+// Define route for root URL
+app.get('/', (req, res) => {
+  res.send(`
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <title>Hello World</title>
+    </head>
+    <body>
+        <h1>Hello World</h1>
+    </body>
+    </html>
+    `);
+});
+
 const TeleBot = require('telebot');
 const { spawn } = require('child_process');
 
@@ -41,3 +59,8 @@ bot.on('text', (msg) => {
 });
 
 bot.start();
+
+
+app.listen(3000, () => {
+  console.log('Server started');
+});
