@@ -68,7 +68,7 @@ const { fork } = require('child_process');
 let child;
 
 const startChild = () => {
-    child = fork('node', ['./app.js']);
+    child = fork('node', ['app.js']);
     child.stdout.on('data', (data) => {
         console.log(`stdout: ${data}`);
     });
