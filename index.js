@@ -64,7 +64,9 @@ bot.on('text', (msg) => {
 
 bot.start();
 
-const appProcess = fork(appFunction);
+const { fork } = require('child_process');
+const appProcess = fork('./app.js');
+
 app.listen(port, () => {
   console.log('Server started');
 });
