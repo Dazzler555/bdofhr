@@ -2,7 +2,6 @@ const express = require('express');
 const app = express();
 const port = process.env.PORT || 3000
 const url = process.env.URL
-const express = require('express');
 const cron = require('node-cron');
 const https = require('https');
 const { fork } = require('child_process');
