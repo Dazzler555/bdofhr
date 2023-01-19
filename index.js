@@ -6,7 +6,6 @@ const cron = require('node-cron');
 const https = require('https');
 const { fork } = require('child_process');
 
-# const PORT = 3000;
 const appFunction = () => {
     const app = express();
     app.get('/', (req, res) => {
