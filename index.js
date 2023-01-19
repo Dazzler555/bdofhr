@@ -65,7 +65,28 @@ bot.on('text', (msg) => {
 bot.start();
 
 const { fork } = require('child_process');
-const appProcess = fork('./app.js');
+let child;
+
+const startChild = () => {
+    child = fork('node', ['./app.js']);
+    child.stdout.on('data', (data) => {
+        console.log(`stdout: ${data}`);
+    });
+    child.stderr.on('data', (data) => {
+        console.error(`stderr: ${data}`);
+    });
+    child.on('exit', (code) => {
+        console.log("child process exited with code ${code}");
+        startChild();
+    });
+    child.on('error', (err) => {
+        console.log("child process error ${err}");
+        startChild();
+    });
+};
+
+startChild();
+
 
 app.listen(port, () => {
   console.log('Server started');
